@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_12 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_12" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_12') || document.getElementById('threejs-container') || document.body;
+  const devicePixelRatio = window.devicePixelRatio || 1;
+const width = container.clientWidth || window.innerWidth || 420;
+const height = container.clientHeight || 380;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+camera.position.z = 4.6;
+camera.position.y = 0.1;
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Ambient & Point Lighting with Teal & Warm Orange Glow
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+scene.add(ambientLight);
+
+// Primary Teal Light
+const lightTeal = new THREE.PointLight(0x14b8a6, 4.5, 12);
+lightTeal.position.set(3, 3, 3);
+scene.add(lightTeal);
+
+// Secondary Warm Orange Light
+const lightOrange = new THREE.PointLight(0xf97316, 4.0, 12);
+lightOrange.position.set(-3, -2.5, 2.5);
+scene.add(lightOrange);
+
+// Subtle Top Backlight
+const lightTop = new THREE.PointLight(0x38bdf8, 2, 8);
+lightTop.position.set(0, 4, -2);
+scene.add(lightTop);
+
+// Master Group
+const kineticGroup = new THREE.Group();
+scene.add(kineticGroup);
+
+// Central Futuristic Polyhedral Core (Icosahedron with teal facet & orange wireframe)
+const coreGeo = new THREE.IcosahedronGeometry(1.0, 1);
+const coreMat = new THREE.MeshPhongMaterial({
+  color: 0x0f172a,
+  emissive: 0x042f2e,
+  specular: 0x2dd4bf,
+  shininess: 100,
+  flatShading: true,
+  transparent: true,
+  opacity: 0.88
+});
+const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+kineticGroup.add(coreMesh);
+
+// Outer Teal Wireframe Cage
+const cageGeo = new THREE.IcosahedronGeometry(1.22, 1);
+const cageMat = new THREE.MeshBasicMaterial({
+  color: 0x2dd4bf,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.65
+});
+const cageMesh = new THREE.Mesh(cageGeo, cageMat);
+kineticGroup.add(cageMesh);
+
+// Gyroscopic Inner Ring 1 (Signature Teal)
+const ringGeo1 = new THREE.TorusGeometry(1.58, 0.022, 16, 80);
+const ringMat1 = new THREE.MeshBasicMaterial({ color: 0x14b8a6, transparent: true, opacity: 0.75 });
+const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
+ring1.rotation.x = Math.PI / 3;
+kineticGroup.add(ring1);
+
+// Gyroscopic Outer Ring 2 (Signature Warm Orange)
+const ringGeo2 = new THREE.TorusGeometry(1.82, 0.02, 16, 80);
+const ringMat2 = new THREE.MeshBasicMaterial({ color: 0xf97316, transparent: true, opacity: 0.85 });
+const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
+ring2.rotation.y = Math.PI / 4;
+kineticGroup.add(ring2);
+
+// Satellite Floating Quantum Code Nodes (alternating Teal and Orange)
+const satellites = [];
+const satGeo = new THREE.BoxGeometry(0.14, 0.14, 0.14);
+const tealMat = new THREE.MeshPhongMaterial({ color: 0x2dd4bf, emissive: 0x115e59 });
+const orangeMat = new THREE.MeshPhongMaterial({ color: 0xfb923c, emissive: 0x9a3412 });
+
+for (let i = 0; i < 8; i++) {
+  const isTeal = i % 2 === 0;
+  const sat = new THREE.Mesh(satGeo, isTeal ? tealMat : orangeMat);
+  const angle = (i / 8) * Math.PI * 2;
+  sat.userData = {
+    angle: angle,
+    speed: 0.012 + (i * 0.002),
+    radius: 1.75 + (i % 3) * 0.25,
+    yOffset: (Math.sin(i * 1.5) * 0.45)
+  };
+  kineticGroup.add(sat);
+  satellites.push(sat);
+}
+
+// Parallax Ambient Star/Dust Particles
+const pCount = 140;
+const pGeo = new THREE.BufferGeometry();
+const pPos = new Float32Array(pCount * 3);
+for (let i = 0; i < pCount * 3; i += 3) {
+  pPos[i] = (Math.random() - 0.5) * 7.5;
+  pPos[i+1] = (Math.random() - 0.5) * 7.5;
+  pPos[i+2] = (Math.random() - 0.5) * 4.5;
+}
+pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+const pMat = new THREE.PointsMaterial({ color: 0x99f6e4, size: 0.035, transparent: true, opacity: 0.65 });
+const particles = new THREE.Points(pGeo, pMat);
+scene.add(particles);
+
+// Interactive Mouse / Pointer Tilt Response
+let targetRotX = 0;
+let targetRotY = 0;
+const handleMove = (e) => {
+  const x = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : window.innerWidth / 2);
+  const y = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : window.innerHeight / 2);
+  const nx = (x / window.innerWidth) * 2 - 1;
+  const ny = (y / window.innerHeight) * 2 - 1;
+  targetRotY = nx * 0.65;
+  targetRotX = ny * 0.45;
+};
+window.addEventListener('pointermove', handleMove);
+window.addEventListener('touchmove', handleMove, { passive: true });
+
+// Animation Loop
+let clock = new THREE.Clock();
+function animate() {
+  requestAnimationFrame(animate);
+  const delta = clock.getDelta();
+  const time = clock.getElapsedTime();
+
+  // Natural slow rotation with smooth damping towards mouse position
+  kineticGroup.rotation.y += 0.007;
+  kineticGroup.rotation.x += (targetRotX - kineticGroup.rotation.x) * 0.05;
+  kineticGroup.rotation.y += (targetRotY - kineticGroup.rotation.y) * 0.05;
+
+  // Opposite counter-rotations for rings and wireframe
+  cageMesh.rotation.y = -time * 0.28;
+  cageMesh.rotation.z = time * 0.14;
+
+  ring1.rotation.z = time * 0.22;
+  ring1.rotation.x = (Math.PI / 3) + Math.sin(time * 0.8) * 0.15;
+
+  ring2.rotation.x = -time * 0.25;
+  ring2.rotation.y = (Math.PI / 4) + Math.cos(time * 0.7) * 0.18;
+
+  // Satellite orbital physics
+  satellites.forEach(sat => {
+    sat.userData.angle += sat.userData.speed;
+    sat.position.x = Math.cos(sat.userData.angle) * sat.userData.radius;
+    sat.position.z = Math.sin(sat.userData.angle) * sat.userData.radius;
+    sat.position.y = sat.userData.yOffset + Math.sin(time * 2.2 + sat.userData.angle) * 0.18;
+    sat.rotation.x += 0.025;
+    sat.rotation.y += 0.035;
+  });
+
+  // Particle floating drift
+  particles.rotation.y = time * 0.018;
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// Window Resize listener
+window.addEventListener('resize', () => {
+  const newW = container.clientWidth || window.innerWidth;
+  const newH = container.clientHeight || 380;
+  camera.aspect = newW / newH;
+  camera.updateProjectionMatrix();
+  renderer.setSize(newW, newH);
+});
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_12 -->
+</body>
+</html>

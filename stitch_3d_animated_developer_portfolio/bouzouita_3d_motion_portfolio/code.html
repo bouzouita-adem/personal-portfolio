@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'surface-container-lowest': '#0a0e17', 'secondary-fixed-dim': '#ffb690', 'on-background': '#dfe2ef', 'tertiary-fixed': '#acedff', 'on-secondary': '#552100', 'outline': '#859490', 'secondary-fixed': '#ffdbca', 'surface': '#0f131c', 'on-tertiary-fixed-variant': '#004e5c', 'surface-bright': '#353943', 'primary-fixed': '#71f8e4', 'surface-container-highest': '#31353f', 'tertiary-fixed-dim': '#4cd7f6', 'on-primary': '#003731', 'on-tertiary-fixed': '#001f26', 'primary-fixed-dim': '#4fdbc8', 'surface-container': '#1c1f29', 'on-primary-fixed-variant': '#005048', 'surface-container-low': '#181b25', 'surface-variant': '#31353f', 'surface-tint': '#4fdbc8', 'on-secondary-container': '#4a1c00', 'on-primary-container': '#00423b', 'on-tertiary': '#003640', 'on-secondary-fixed': '#341100', 'surface-dim': '#0f131c', 'on-tertiary-container': '#00414d', 'on-error-container': '#ffdad6', 'error': '#ffb4ab', 'error-container': '#93000a', 'secondary': '#ffb690', 'primary-container': '#14b8a6', 'inverse-on-surface': '#2c303a', 'inverse-surface': '#dfe2ef', 'tertiary': '#4cd7f6', 'background': '#0f131c', 'primary': '#4fdbc8', 'on-secondary-fixed-variant': '#783200', 'tertiary-container': '#00b4d2', 'on-surface': '#dfe2ef', 'outline-variant': '#3c4947', 'secondary-container': '#ec6a06', 'on-primary-fixed': '#00201c', 'on-error': '#690005', 'on-surface-variant': '#bbcac6', 'inverse-primary': '#006b5f', 'surface-container-high': '#262a34' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'margin-mobile': '1.25rem', 'gutter': '1.5rem', 'space-md': '1rem', 'space-xs': '0.25rem', 'gutter-mobile': '1rem', 'space-lg': '1.5rem', 'margin': '3rem', 'space-xl': '2.5rem', 'space-sm': '0.5rem', 'space-2xl': '4rem' }, fontFamily: { 'body-lg': ['Inter'], 'headline-sm': ['Space Grotesk'], 'code-mono-md': ['JetBrains Mono'], 'label-badge': ['JetBrains Mono'], 'body-md': ['Inter'], 'headline-lg': ['Space Grotesk'], 'body-sm': ['Inter'], 'code-mono-sm': ['JetBrains Mono'], 'display-lg-mobile': ['Space Grotesk'], 'display-xl': ['Space Grotesk'], 'headline-md': ['Space Grotesk'], 'display-xl-mobile': ['Space Grotesk'], 'display-lg': ['Space Grotesk'] }, fontSize: { 'body-lg': ['1.125rem', { lineHeight: '1.75rem', letterSpacing: '-0.01em', fontWeight: '400' }], 'headline-sm': ['1.25rem', { lineHeight: '1.75rem', letterSpacing: '-0.015em', fontWeight: '600' }], 'code-mono-md': ['0.9375rem', { lineHeight: '1.5rem', letterSpacing: '-0.01em', fontWeight: '500' }], 'label-badge': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.06em', fontWeight: '600' }], 'body-md': ['1rem', { lineHeight: '1.6rem', letterSpacing: '-0.005em', fontWeight: '400' }], 'headline-lg': ['2.25rem', { lineHeight: '2.75rem', letterSpacing: '-0.025em', fontWeight: '600' }], 'body-sm': ['0.875rem', { lineHeight: '1.4rem', fontWeight: '400' }], 'code-mono-sm': ['0.8125rem', { lineHeight: '1.3rem', letterSpacing: '0.02em', fontWeight: '500' }], 'display-lg-mobile': ['2.25rem', { lineHeight: '2.75rem', letterSpacing: '-0.025em', fontWeight: '700' }], 'display-xl': ['4.5rem', { lineHeight: '5rem', letterSpacing: '-0.04em', fontWeight: '700' }], 'headline-md': ['1.75rem', { lineHeight: '2.25rem', letterSpacing: '-0.02em', fontWeight: '600' }], 'display-xl-mobile': ['2.75rem', { lineHeight: '3.25rem', letterSpacing: '-0.03em', fontWeight: '700' }], 'display-lg': ['3.5rem', { lineHeight: '4rem', letterSpacing: '-0.035em', fontWeight: '700' }] } } } }</script><style>@layer base { html, body { width: 100%; margin: 0; padding: 0; min-height: 100%; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-background text-on-surface font-body-md text-body-md min-h-screen relative selection:bg-primary-container selection:text-on-primary-container"><div class="fixed inset-0 pointer-events-none z-0 overflow-hidden"><div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-primary/10 blur-[120px]"></div><div class="absolute top-1/3 -right-40 w-96 h-96 rounded-full bg-secondary-container/10 blur-[140px]"></div><div class="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-tertiary/10 blur-[130px]"></div></div><header class="fixed top-0 w-full z-50 pt-safe px-margin-mobile"><div class="h-16 flex items-center justify-between mt-space-xs"><div class="flex items-center gap-space-sm bg-surface-container-low/70 backdrop-blur-xl rounded-full pl-space-sm pr-space-md py-space-xs shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold pl-space-xs">bz.</span><div class="h-4 w-px bg-outline-variant/40"></div><div class="flex items-center gap-1.5"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="font-label-badge text-label-badge text-primary uppercase tracking-wider hidden sm:inline-block">OPEN TO WORK</span></div></div><div class="flex items-center gap-space-xs"><a class="hidden xs:inline-flex items-center justify-center h-11 px-space-md rounded-full bg-primary font-headline-sm text-label-badge text-on-primary font-semibold shadow-[0_0_16px_rgba(79,219,200,0.25)] transition-transform active:scale-95" data-path="contact" href="#">CONTACT</a><button class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-low/70 backdrop-blur-xl text-on-surface hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">menu</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface z-10 pb-28"><div class="flex flex-col w-full text-on-surface">
+<!-- HERO SECTION -->
+<section class="relative px-margin-mobile pt-space-md pb-space-2xl flex flex-col gap-space-lg overflow-hidden" id="hero">
+<!-- Ambient Radiance Background Elements -->
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-primary/15 blur-[100px] pointer-events-none"></div>
+<div class="absolute top-48 right-0 w-60 h-60 rounded-full bg-secondary-container/10 blur-[90px] pointer-events-none"></div>
+<!-- Status Header Pill -->
+<div class="flex items-center gap-space-xs self-start bg-surface-container-high/80 backdrop-blur-xl px-space-md py-space-xs rounded-full shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-code-mono-sm text-code-mono-sm text-primary tracking-wide">SYSTEM READY // OPEN FOR ROLES</span>
+</div>
+<!-- Main Typography Header -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-code-mono-sm text-code-mono-sm text-outline">const dev =</span>
+<h1 class="font-display-xl-mobile text-display-xl-mobile font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-fixed-dim to-secondary">
+          bouzouita
+        </h1>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight leading-snug">
+        Crafting responsive interfaces with spring physics &amp; modern web runtimes.
+      </p>
+<p class="font-code-mono-sm text-code-mono-sm text-on-surface-variant mt-space-xs">
+        Junior Software Engineer • Web Development &amp; Hardware Enthusiast • Open Source Contributor
+      </p>
+</div>
+<!-- Interactive 3D Focal Object -->
+<div class="relative w-full rounded-xl bg-surface-container-lowest/60 backdrop-blur-xl p-space-xs shadow-xl overflow-hidden group">
+<div class="absolute top-space-sm left-space-sm z-20 flex items-center gap-1.5 bg-surface-container-lowest/80 backdrop-blur-md px-space-sm py-1 rounded-full">
+<span class="material-symbols-outlined text-primary text-[14px]">view_in_ar</span>
+<span class="font-label-badge text-label-badge text-primary-fixed">Interactive Orbit • Touch / Cursor reactive</span>
+</div>
+<div class="absolute bottom-space-sm right-space-sm z-20 flex items-center gap-1 bg-surface-container-lowest/80 backdrop-blur-md px-space-sm py-1 rounded-full">
+<span class="font-code-mono-sm text-[10px] text-outline">FPS: 60.0 • THREE.JS CORE</span>
+</div>
+<!-- STITCH_THREEJS_START:ANIMATION_12 class="w-full h-[360px] bg-transparent rounded-lg relative flex items-center justify-center" -->
+<div class="w-full h-[360px] bg-transparent rounded-lg relative flex items-center justify-center" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_12" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_12') || document.getElementById('threejs-container') || document.body;
+  const devicePixelRatio = window.devicePixelRatio || 1;
+const width = container.clientWidth || window.innerWidth || 420;
+const height = container.clientHeight || 380;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+camera.position.z = 4.6;
+camera.position.y = 0.1;
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Ambient & Point Lighting with Teal & Warm Orange Glow
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+scene.add(ambientLight);
+
+// Primary Teal Light
+const lightTeal = new THREE.PointLight(0x14b8a6, 4.5, 12);
+lightTeal.position.set(3, 3, 3);
+scene.add(lightTeal);
+
+// Secondary Warm Orange Light
+const lightOrange = new THREE.PointLight(0xf97316, 4.0, 12);
+lightOrange.position.set(-3, -2.5, 2.5);
+scene.add(lightOrange);
+
+// Subtle Top Backlight
+const lightTop = new THREE.PointLight(0x38bdf8, 2, 8);
+lightTop.position.set(0, 4, -2);
+scene.add(lightTop);
+
+// Master Group
+const kineticGroup = new THREE.Group();
+scene.add(kineticGroup);
+
+// Central Futuristic Polyhedral Core (Icosahedron with teal facet & orange wireframe)
+const coreGeo = new THREE.IcosahedronGeometry(1.0, 1);
+const coreMat = new THREE.MeshPhongMaterial({
+  color: 0x0f172a,
+  emissive: 0x042f2e,
+  specular: 0x2dd4bf,
+  shininess: 100,
+  flatShading: true,
+  transparent: true,
+  opacity: 0.88
+});
+const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+kineticGroup.add(coreMesh);
+
+// Outer Teal Wireframe Cage
+const cageGeo = new THREE.IcosahedronGeometry(1.22, 1);
+const cageMat = new THREE.MeshBasicMaterial({
+  color: 0x2dd4bf,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.65
+});
+const cageMesh = new THREE.Mesh(cageGeo, cageMat);
+kineticGroup.add(cageMesh);
+
+// Gyroscopic Inner Ring 1 (Signature Teal)
+const ringGeo1 = new THREE.TorusGeometry(1.58, 0.022, 16, 80);
+const ringMat1 = new THREE.MeshBasicMaterial({ color: 0x14b8a6, transparent: true, opacity: 0.75 });
+const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
+ring1.rotation.x = Math.PI / 3;
+kineticGroup.add(ring1);
+
+// Gyroscopic Outer Ring 2 (Signature Warm Orange)
+const ringGeo2 = new THREE.TorusGeometry(1.82, 0.02, 16, 80);
+const ringMat2 = new THREE.MeshBasicMaterial({ color: 0xf97316, transparent: true, opacity: 0.85 });
+const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
+ring2.rotation.y = Math.PI / 4;
+kineticGroup.add(ring2);
+
+// Satellite Floating Quantum Code Nodes (alternating Teal and Orange)
+const satellites = [];
+const satGeo = new THREE.BoxGeometry(0.14, 0.14, 0.14);
+const tealMat = new THREE.MeshPhongMaterial({ color: 0x2dd4bf, emissive: 0x115e59 });
+const orangeMat = new THREE.MeshPhongMaterial({ color: 0xfb923c, emissive: 0x9a3412 });
+
+for (let i = 0; i < 8; i++) {
+  const isTeal = i % 2 === 0;
+  const sat = new THREE.Mesh(satGeo, isTeal ? tealMat : orangeMat);
+  const angle = (i / 8) * Math.PI * 2;
+  sat.userData = {
+    angle: angle,
+    speed: 0.012 + (i * 0.002),
+    radius: 1.75 + (i % 3) * 0.25,
+    yOffset: (Math.sin(i * 1.5) * 0.45)
+  };
+  kineticGroup.add(sat);
+  satellites.push(sat);
+}
+
+// Parallax Ambient Star/Dust Particles
+const pCount = 140;
+const pGeo = new THREE.BufferGeometry();
+const pPos = new Float32Array(pCount * 3);
+for (let i = 0; i < pCount * 3; i += 3) {
+  pPos[i] = (Math.random() - 0.5) * 7.5;
+  pPos[i+1] = (Math.random() - 0.5) * 7.5;
+  pPos[i+2] = (Math.random() - 0.5) * 4.5;
+}
+pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+const pMat = new THREE.PointsMaterial({ color: 0x99f6e4, size: 0.035, transparent: true, opacity: 0.65 });
+const particles = new THREE.Points(pGeo, pMat);
+scene.add(particles);
+
+// Interactive Mouse / Pointer Tilt Response
+let targetRotX = 0;
+let targetRotY = 0;
+const handleMove = (e) => {
+  const x = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : window.innerWidth / 2);
+  const y = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : window.innerHeight / 2);
+  const nx = (x / window.innerWidth) * 2 - 1;
+  const ny = (y / window.innerHeight) * 2 - 1;
+  targetRotY = nx * 0.65;
+  targetRotX = ny * 0.45;
+};
+window.addEventListener('pointermove', handleMove);
+window.addEventListener('touchmove', handleMove, { passive: true });
+
+// Animation Loop
+let clock = new THREE.Clock();
+function animate() {
+  requestAnimationFrame(animate);
+  const delta = clock.getDelta();
+  const time = clock.getElapsedTime();
+
+  // Natural slow rotation with smooth damping towards mouse position
+  kineticGroup.rotation.y += 0.007;
+  kineticGroup.rotation.x += (targetRotX - kineticGroup.rotation.x) * 0.05;
+  kineticGroup.rotation.y += (targetRotY - kineticGroup.rotation.y) * 0.05;
+
+  // Opposite counter-rotations for rings and wireframe
+  cageMesh.rotation.y = -time * 0.28;
+  cageMesh.rotation.z = time * 0.14;
+
+  ring1.rotation.z = time * 0.22;
+  ring1.rotation.x = (Math.PI / 3) + Math.sin(time * 0.8) * 0.15;
+
+  ring2.rotation.x = -time * 0.25;
+  ring2.rotation.y = (Math.PI / 4) + Math.cos(time * 0.7) * 0.18;
+
+  // Satellite orbital physics
+  satellites.forEach(sat => {
+    sat.userData.angle += sat.userData.speed;
+    sat.position.x = Math.cos(sat.userData.angle) * sat.userData.radius;
+    sat.position.z = Math.sin(sat.userData.angle) * sat.userData.radius;
+    sat.position.y = sat.userData.yOffset + Math.sin(time * 2.2 + sat.userData.angle) * 0.18;
+    sat.rotation.x += 0.025;
+    sat.rotation.y += 0.035;
+  });
+
+  // Particle floating drift
+  particles.rotation.y = time * 0.018;
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// Window Resize listener
+window.addEventListener('resize', () => {
+  const newW = container.clientWidth || window.innerWidth;
+  const newH = container.clientHeight || 380;
+  camera.aspect = newW / newH;
+  camera.updateProjectionMatrix();
+  renderer.setSize(newW, newH);
+});
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_12 -->
+</div>
+<!-- Dual CTAs -->
+<div class="flex flex-col sm:flex-row gap-space-sm w-full">
+<a class="w-full sm:flex-1 h-12 flex items-center justify-center gap-space-xs rounded-full bg-primary-container text-on-primary font-headline-sm text-headline-sm font-semibold shadow-[0_0_20px_rgba(20,184,166,0.35)] transition-transform active:scale-95" href="#projects">
+<span>View Projects</span>
+<span class="material-symbols-outlined text-[20px]">south_east</span>
+</a>
+<a class="w-full sm:flex-1 h-12 flex items-center justify-center gap-space-xs rounded-full bg-surface-container-high/60 backdrop-blur-xl text-secondary font-headline-sm text-headline-sm font-semibold shadow-sm transition-transform active:scale-95" href="#contact">
+<span>Contact Me</span>
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</a>
+</div>
+<!-- Stat Chips Pair -->
+<div class="grid grid-cols-3 gap-space-xs pt-space-xs">
+<div class="bg-surface-container/70 backdrop-blur-md p-space-sm rounded-lg flex flex-col items-center justify-center text-center shadow-sm">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">[3+]</span>
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase mt-1">Shipped Projects</span>
+</div>
+<div class="bg-surface-container/70 backdrop-blur-md p-space-sm rounded-lg flex flex-col items-center justify-center text-center shadow-sm">
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">∞</span>
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase mt-1">Always Learning</span>
+</div>
+<div class="bg-surface-container/70 backdrop-blur-md p-space-sm rounded-lg flex flex-col items-center justify-center text-center shadow-sm">
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold">0.04s</span>
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase mt-1">Spring Physics</span>
+</div>
+</div>
+</section>
+<!-- ABOUT & RIG SYNERGY SECTION -->
+<section class="px-margin-mobile py-space-xl flex flex-col gap-space-lg" id="about">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs text-primary font-code-mono-sm text-code-mono-sm">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>01 // ORIGIN &amp; PHILOSOPHY</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Silicon to DOM</h2>
+</div>
+<!-- Learner Bio Bento Card -->
+<div class="bg-surface-container-low/80 backdrop-blur-xl p-space-lg rounded-xl shadow-md flex flex-col gap-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+        I am a curious, disciplined beginner software engineer learning in public. My path doesn’t start in abstract theory—it starts at the copper heat pipes and memory clocks of custom PC hardware, branching seamlessly up into clean semantic HTML5, expressive modern CSS, and reactive JavaScript runtimes.
+      </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        Building custom desktop rigs taught me system thermals, voltage stability, and deterministic diagnosis. Writing front-end interfaces taught me ergonomics, accessibility, and micro-delight. Currently expanding into React, component design tokens, and Framer Motion spring dampening.
+      </p>
+<!-- Live Counters -->
+<div class="grid grid-cols-3 gap-space-xs pt-space-xs bg-surface-container-lowest/60 rounded-lg p-space-sm">
+<div class="flex flex-col items-center">
+<span class="font-code-mono-md text-code-mono-md text-primary font-bold" id="counter-commits">318+</span>
+<span class="font-label-badge text-[9px] text-outline uppercase tracking-wider">Git Commits</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-code-mono-md text-code-mono-md text-secondary font-bold">142d</span>
+<span class="font-label-badge text-[9px] text-outline uppercase tracking-wider">Study Streak</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-code-mono-md text-code-mono-md text-tertiary font-bold">99.9%</span>
+<span class="font-label-badge text-[9px] text-outline uppercase tracking-wider">Rig Uptime</span>
+</div>
+</div>
+</div>
+<!-- Hardware & Code Synergy Card -->
+<div class="bg-surface-container-high/60 backdrop-blur-xl p-space-lg rounded-xl shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">memory</span>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface block">Lab Rig Spec</span>
+<span class="font-code-mono-sm text-[11px] text-secondary">DIAGNOSTIC &amp; DEV WORKBENCH</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-primary bg-primary/10 px-space-xs py-0.5 rounded-full">ACTIVE</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs font-code-mono-sm text-code-mono-sm">
+<div class="bg-surface-container-lowest/70 p-space-sm rounded-lg flex flex-col">
+<span class="text-outline text-[11px]">PROCESSOR</span>
+<span class="text-on-surface font-semibold text-body-sm">AMD Ryzen 7 5800X</span>
+<span class="text-primary text-[10px] mt-0.5">8C / 16T • 4.7GHz Boost</span>
+</div>
+<div class="bg-surface-container-lowest/70 p-space-sm rounded-lg flex flex-col">
+<span class="text-outline text-[11px]">COOLING LOOP</span>
+<span class="text-on-surface font-semibold text-body-sm">Custom Loop 280mm</span>
+<span class="text-secondary text-[10px] mt-0.5">Idle: 31°C • Load: 64°C</span>
+</div>
+<div class="bg-surface-container-lowest/70 p-space-sm rounded-lg flex flex-col">
+<span class="text-outline text-[11px]">SYSTEM MEMORY</span>
+<span class="text-on-surface font-semibold text-body-sm">32GB DDR4 3600MHz</span>
+<span class="text-primary text-[10px] mt-0.5">CL16 Low Latency</span>
+</div>
+<div class="bg-surface-container-lowest/70 p-space-sm rounded-lg flex flex-col">
+<span class="text-outline text-[11px]">DEV OS ROOT</span>
+<span class="text-on-surface font-semibold text-body-sm">Arch / Fedora Dual</span>
+<span class="text-tertiary text-[10px] mt-0.5">ZSH + Neovim Toolchain</span>
+</div>
+</div>
+</div>
+</section>
+<!-- TECH STACK & MARQUEE SECTION -->
+<section class="py-space-xl flex flex-col gap-space-lg overflow-hidden" id="skills">
+<div class="px-margin-mobile flex flex-col gap-1">
+<div class="flex items-center gap-space-xs text-secondary font-code-mono-sm text-code-mono-sm">
+<span class="material-symbols-outlined text-[18px]">developer_mode</span>
+<span>02 // SKILL SPECTRUM</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Toolkit &amp; Frameworks</h2>
+</div>
+<!-- Infinite Auto-Scroll Marquee (CSS Driven) -->
+<div class="relative w-full overflow-hidden py-space-xs">
+<div class="flex gap-space-sm w-max animate-[marquee_20s_linear_infinite]" style="animation: marquee 22s linear infinite;">
+<!-- Set 1 -->
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-primary font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">html</span> HTML5 Semantic
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-secondary font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">css</span> CSS3 Grid/Flex
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-primary font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">javascript</span> Vanilla JavaScript ES6+
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-tertiary font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">terminal</span> Git &amp; GitHub Pages
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-primary-fixed-dim font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">style</span> Tailwind CSS
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-secondary-fixed-dim font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">code_blocks</span> React (Learning)
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-primary font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">motion_photos_on</span> Framer Motion Springs
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-secondary font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">hardware</span> PC Thermal Diagnostics
+        </span>
+<!-- Duplicated Set for Seamless Loop -->
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-primary font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">html</span> HTML5 Semantic
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-secondary font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">css</span> CSS3 Grid/Flex
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-primary font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">javascript</span> Vanilla JavaScript ES6+
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/80 text-tertiary font-code-mono-sm text-code-mono-sm shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">terminal</span> Git &amp; GitHub Pages
+        </span>
+</div>
+</div>
+<!-- Interactive Skill Matrix -->
+<div class="px-margin-mobile flex flex-col gap-space-sm">
+<div class="bg-surface-container-low/70 backdrop-blur-xl p-space-md rounded-xl shadow-md flex flex-col gap-space-md">
+<!-- Proficiency 1 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-code-mono-sm text-code-mono-sm">
+<span class="text-on-surface font-medium">Modern HTML5 &amp; Accessibility (a11y)</span>
+<span class="text-primary font-bold">88%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<!-- Proficiency 2 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-code-mono-sm text-code-mono-sm">
+<span class="text-on-surface font-medium">CSS3 Flexbox, CSS Grid &amp; Tailwind</span>
+<span class="text-primary font-bold">84%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 84%"></div>
+</div>
+</div>
+<!-- Proficiency 3 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-code-mono-sm text-code-mono-sm">
+<span class="text-on-surface font-medium">JavaScript DOM Manipulation &amp; Logic</span>
+<span class="text-secondary font-bold">75%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<!-- Proficiency 4 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-code-mono-sm text-code-mono-sm">
+<span class="text-on-surface font-medium">Hardware Architecture &amp; Thermal Benchmarking</span>
+<span class="text-tertiary font-bold">92%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PROJECTS BENTO-GRID SECTION -->
+<section class="px-margin-mobile py-space-xl flex flex-col gap-space-lg" id="projects">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs text-primary font-code-mono-sm text-code-mono-sm">
+<span class="material-symbols-outlined text-[18px]">view_quilt</span>
+<span>03 // FEATURED BUILDS</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Selected Projects</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Production-ready deployments showcasing responsive layout logic, keyboard events, and tactile UI feedback.
+      </p>
+</div>
+<!-- FEATURED PROJECT 1: Calculatrice -->
+<div class="bg-surface-container-low/90 backdrop-blur-2xl rounded-xl p-space-lg shadow-xl flex flex-col gap-space-md transition-all active:scale-[0.99]">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge text-primary bg-primary/10 px-space-sm py-1 rounded-full uppercase">
+          Featured • French UI
+        </span>
+<div class="flex items-center gap-space-xs">
+<a class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</a>
+<a class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">code</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">Calculatrice</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Browser-based calculator in French with neumorphic-glass hybrid styling. Supports keyboard listeners, automatic font size scaling for long numbers, an interactive calculation history tape, and quick teal/warm orange accent themes.
+        </p>
+</div>
+<!-- Interactive Calculator Preview Widget -->
+<div class="w-full bg-surface-container-lowest/80 rounded-lg p-space-md flex flex-col gap-space-sm shadow-inner" id="calc-preview">
+<!-- Display Tape -->
+<div class="flex flex-col items-end justify-center bg-surface-container/60 px-space-md py-space-sm rounded-lg min-h-[56px]">
+<span class="font-code-mono-sm text-[11px] text-outline" id="calc-history">124 × 8</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold tracking-wider" id="calc-display">992</span>
+</div>
+<!-- Calc Buttons Grid -->
+<div class="grid grid-cols-4 gap-1.5 text-center font-code-mono-sm text-code-mono-sm">
+<button class="h-10 rounded bg-surface-variant/50 text-error font-bold active:scale-95 transition-transform" onclick="calcInput('C')" type="button">C</button>
+<button class="h-10 rounded bg-surface-variant/40 text-on-surface active:scale-95 transition-transform" onclick="calcInput('±')" type="button">±</button>
+<button class="h-10 rounded bg-surface-variant/40 text-on-surface active:scale-95 transition-transform" onclick="calcInput('%')" type="button">%</button>
+<button class="h-10 rounded bg-secondary-container/30 text-secondary font-bold active:scale-95 transition-transform" onclick="calcInput('÷')" type="button">÷</button>
+<button class="h-10 rounded bg-surface-container-high text-on-surface active:scale-95 transition-transform" onclick="calcInput('7')" type="button">7</button>
+<button class="h-10 rounded bg-surface-container-high text-on-surface active:scale-95 transition-transform" onclick="calcInput('8')" type="button">8</button>
+<button class="h-10 rounded bg-surface-container-high text-on-surface active:scale-95 transition-transform" onclick="calcInput('9')" type="button">9</button>
+<button class="h-10 rounded bg-secondary-container/30 text-secondary font-bold active:scale-95 transition-transform" onclick="calcInput('×')" type="button">×</button>
+<button class="h-10 rounded bg-surface-container-high text-on-surface active:scale-95 transition-transform" onclick="calcInput('4')" type="button">4</button>
+<button class="h-10 rounded bg-surface-container-high text-on-surface active:scale-95 transition-transform" onclick="calcInput('5')" type="button">5</button>
+<button class="h-10 rounded bg-surface-container-high text-on-surface active:scale-95 transition-transform" onclick="calcInput('6')" type="button">6</button>
+<button class="h-10 rounded bg-secondary-container/30 text-secondary font-bold active:scale-95 transition-transform" onclick="calcInput('-')" type="button">−</button>
+<button class="h-10 rounded bg-surface-container-high text-on-surface active:scale-95 transition-transform" onclick="calcInput('1')" type="button">1</button>
+<button class="h-10 rounded bg-surface-container-high text-on-surface active:scale-95 transition-transform" onclick="calcInput('2')" type="button">2</button>
+<button class="h-10 rounded bg-surface-container-high text-on-surface active:scale-95 transition-transform" onclick="calcInput('3')" type="button">3</button>
+<button class="h-10 rounded bg-secondary-container/30 text-secondary font-bold active:scale-95 transition-transform" onclick="calcInput('+')" type="button">+</button>
+<button class="col-span-2 h-10 rounded bg-surface-container-high text-on-surface active:scale-95 transition-transform" onclick="calcInput('0')" type="button">0</button>
+<button class="h-10 rounded bg-surface-container-high text-on-surface active:scale-95 transition-transform" onclick="calcInput('.')" type="button">,</button>
+<button class="h-10 rounded bg-primary text-on-primary font-bold active:scale-95 transition-transform shadow-sm" onclick="calcInput('=')" type="button">=</button>
+</div>
+</div>
+<!-- Action Chips -->
+<div class="flex flex-wrap items-center gap-space-xs font-code-mono-sm text-[11px] text-outline">
+<span class="bg-surface-container-high px-space-xs py-0.5 rounded">Vanilla JS</span>
+<span class="bg-surface-container-high px-space-xs py-0.5 rounded">CSS Glassmorphism</span>
+<span class="bg-surface-container-high px-space-xs py-0.5 rounded">Keyboard Events</span>
+<span class="bg-surface-container-high px-space-xs py-0.5 rounded">GitHub Pages Ready</span>
+</div>
+</div>
+<!-- PROJECT 2: HardwarePulse -->
+<div class="bg-surface-container-low/80 backdrop-blur-xl rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge text-secondary bg-secondary-container/15 px-space-sm py-1 rounded-full uppercase">
+          Hardware Diagnostics
+        </span>
+<span class="material-symbols-outlined text-outline text-[20px]">monitor_heart</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">HardwarePulse</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          PC diagnostic dashboard &amp; benchmark monitor. Visualizes live sensor telemetry, thermal choke thresholds, and multi-core CPU utilization curves.
+        </p>
+</div>
+<!-- Simulated WebGL/SVG Sparkline -->
+<div class="bg-surface-container-lowest/80 rounded-lg p-space-md flex flex-col gap-space-xs">
+<div class="flex justify-between items-center font-code-mono-sm text-code-mono-sm">
+<span class="text-on-surface-variant text-[11px]">THERMAL DRIFT (CPU CORE #0)</span>
+<span class="text-secondary font-bold">54.2°C</span>
+</div>
+<svg class="w-full h-16 text-secondary" fill="none" preserveaspectratio="none" viewbox="0 0 300 60">
+<path d="M0,45 Q20,30 40,40 T80,20 T120,35 T160,15 T200,28 T240,10 T280,22 T300,18" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<path d="M0,45 Q20,30 40,40 T80,20 T120,35 T160,15 T200,28 T240,10 T280,22 T300,18 L300,60 L0,60 Z" fill="currentColor" fill-opacity="0.08"></path>
+</svg>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs font-code-mono-sm text-[11px] text-outline">
+<span class="bg-surface-container-high px-space-xs py-0.5 rounded">Canvas 2D</span>
+<span class="bg-surface-container-high px-space-xs py-0.5 rounded">System Sensors</span>
+<span class="bg-surface-container-high px-space-xs py-0.5 rounded">Stress Algorithms</span>
+</div>
+</div>
+<!-- PROJECT 3: MotionForge UI -->
+<div class="bg-surface-container-low/80 backdrop-blur-xl rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge text-tertiary bg-tertiary/10 px-space-sm py-1 rounded-full uppercase">
+          Micro-Interactions
+        </span>
+<span class="material-symbols-outlined text-outline text-[20px]">animation</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">MotionForge UI</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Hand-tuned micro-interaction repository inspired by 21st.dev. Features spring physics parameters, kinetic card sheen tokens, and copy-paste Tailwind snippets.
+        </p>
+</div>
+<!-- Spring Physics Interactive Test Button -->
+<div class="bg-surface-container-lowest/80 p-space-md rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-code-mono-sm text-[11px] text-primary">SPRING DAMPING: 0.16</span>
+<span class="font-body-sm text-body-sm text-on-surface">Tap to trigger bounce:</span>
+</div>
+<button class="w-12 h-12 rounded-full bg-primary/20 text-primary flex items-center justify-center transition-transform duration-200 active:scale-75 shadow-sm" onclick="this.classList.toggle('scale-125'); setTimeout(() =&gt; this.classList.remove('scale-125'), 260)" type="button">
+<span class="material-symbols-outlined text-[20px]">touch_app</span>
+</button>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs font-code-mono-sm text-[11px] text-outline">
+<span class="bg-surface-container-high px-space-xs py-0.5 rounded">Framer Motion Specs</span>
+<span class="bg-surface-container-high px-space-xs py-0.5 rounded">Spring Equations</span>
+<span class="bg-surface-container-high px-space-xs py-0.5 rounded">Tailwind Tokens</span>
+</div>
+</div>
+</section>
+<!-- JOURNEY & LEARNING TIMELINE -->
+<section class="px-margin-mobile py-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs text-primary font-code-mono-sm text-code-mono-sm">
+<span class="material-symbols-outlined text-[18px]">timeline</span>
+<span>04 // TIMELINE</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">The Learning Log</h2>
+</div>
+<!-- Vertical Timeline Nodes -->
+<div class="flex flex-col gap-space-md relative pl-6 before:content-[''] before:absolute before:left-2 before:top-3 before:bottom-3 before:w-0.5 before:bg-surface-container-highest">
+<!-- Node 1 -->
+<div class="relative flex flex-col gap-1">
+<span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-secondary shadow-[0_0_10px_rgba(255,182,144,0.5)]"></span>
+<span class="font-code-mono-sm text-code-mono-sm text-secondary font-bold">2024 // HARDWARE &amp; ARCHITECTURE</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Diagnostic Rigs &amp; Assembly</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Mastered PC building fundamentals, thermal profiling, custom loop tuning, and bootloader debugging. Formed a bedrock understanding of how software engages with silicon.
+        </p>
+</div>
+<!-- Node 2 -->
+<div class="relative flex flex-col gap-1 pt-space-sm">
+<span class="absolute -left-[27px] top-4 w-3.5 h-3.5 rounded-full bg-tertiary shadow-[0_0_10px_rgba(76,215,246,0.5)]"></span>
+<span class="font-code-mono-sm text-code-mono-sm text-tertiary font-bold">2024 Q3 // WEB FUNDAMENTALS</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Semantic HTML, Modern CSS, ES6+</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Began full immersion in modern web architecture. Implemented accessible layouts, responsive Flexbox/Grid architectures, and clean JavaScript data flows.
+        </p>
+</div>
+<!-- Node 3 -->
+<div class="relative flex flex-col gap-1 pt-space-sm">
+<span class="absolute -left-[27px] top-4 w-3.5 h-3.5 rounded-full bg-primary shadow-[0_0_10px_rgba(79,219,200,0.5)]"></span>
+<span class="font-code-mono-sm text-code-mono-sm text-primary font-bold">2025 // COMPONENT SYSTEMS</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Calculatrice Launch &amp; Production Prep</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Launched Calculatrice, deployed GitHub Pages infrastructure, and integrated spring-based micro-interactions with Three.js rendering pipelines. Ready for junior developer roles.
+        </p>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE CONTACT & TERMINAL CONSOLE -->
+<section class="px-margin-mobile py-space-xl flex flex-col gap-space-lg" id="contact">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs text-primary font-code-mono-sm text-code-mono-sm">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>05 // DISPATCH CONSOLE</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Let's build something together.</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Have an internship, junior position, or collaborative web experiment in mind? Fire off a transmission below.
+      </p>
+</div>
+<!-- Contact Form with Frosted Glass -->
+<form class="bg-surface-container-low/85 backdrop-blur-xl p-space-lg rounded-xl shadow-xl flex flex-col gap-space-md" onsubmit="event.preventDefault(); alert('Message buffered! Thank you for connecting with bouzouita.');">
+<div class="flex flex-col gap-1">
+<label class="font-code-mono-sm text-code-mono-sm text-on-surface-variant flex items-center gap-1">
+<span class="text-primary">&gt;</span> SENDER_IDENTITY
+        </label>
+<input class="w-full bg-surface-container-lowest/80 text-on-surface placeholder:text-outline/60 px-space-md py- space-sm rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" placeholder="Your name or team handle" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-code-mono-sm text-code-mono-sm text-on-surface-variant flex items-center gap-1">
+<span class="text-primary">&gt;</span> RETURN_ADDRESS
+        </label>
+<input class="w-full bg-surface-container-lowest/80 text-on-surface placeholder:text-outline/60 px-space-md py-space-sm rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" placeholder="name@domain.com" required="" type="email"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-code-mono-sm text-code-mono-sm text-on-surface-variant flex items-center gap-1">
+<span class="text-primary">&gt;</span> MESSAGE_BUFFER
+        </label>
+<textarea class="w-full bg-surface-container-lowest/80 text-on-surface placeholder:text-outline/60 p-space-md rounded-lg font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" placeholder="Describe project context, technical stacks, or open roles..." required="" rows="4"></textarea>
+</div>
+<button class="w-full h-12 rounded-full bg-primary text-on-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-space-xs shadow-[0_0_16px_rgba(79,219,200,0.3)] transition-transform active:scale-95" type="submit">
+<span>Transmit Message</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</form>
+<!-- One-Tap Copyable Credentials -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<span class="font-label-badge text-label-badge text-outline uppercase tracking-wider">Direct Reach Endpoints</span>
+<div class="flex items-center justify-between p-space-sm bg-surface-container-high/60 backdrop-blur-md rounded-lg">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">code</span>
+<span class="font-code-mono-sm text-code-mono-sm text-on-surface">github.com/bouzouita</span>
+</div>
+<button class="p-1.5 rounded-full bg-surface-container text-primary hover:bg-surface-bright active:scale-90 transition-transform" onclick="navigator.clipboard.writeText('https://github.com/bouzouita'); alert('Copied GitHub handle!');" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-space-sm bg-surface-container-high/60 backdrop-blur-md rounded-lg">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">mail</span>
+<span class="font-code-mono-sm text-code-mono-sm text-on-surface">bouzouita.dev@pm.me</span>
+</div>
+<button class="p-1.5 rounded-full bg-surface-container text-secondary hover:bg-surface-bright active:scale-90 transition-transform" onclick="navigator.clipboard.writeText('bouzouita.dev@pm.me'); alert('Copied Email address!');" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</section>
+<!-- FOOTER & QUICK BAR -->
+<footer class="px-margin-mobile pt-space-lg pb-space-2xl flex flex-col items-center gap-space-md text-center">
+<div class="w-12 h-0.5 bg-surface-container-highest rounded-full"></div>
+<div class="flex items-center gap-space-md">
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary shadow-sm active:scale-90 transition-transform" href="#hero">
+<span class="material-symbols-outlined text-[20px]">arrow_upward</span>
+</a>
+</div>
+<p class="font-code-mono-sm text-[11px] text-outline max-w-xs leading-relaxed">
+      Built with HTML5, Tailwind CSS, Three.js &amp; Spring Motion for GitHub Pages deployment. Designed for bouzouita.
+    </p>
+</footer>
+</div>
+<script>
+  // Calculatrice Interactive Preview Logic
+  let currentVal = '992';
+  let historyVal = '124 × 8';
+
+  function calcInput(key) {
+    const display = document.getElementById('calc-display');
+    const hist = document.getElementById('calc-history');
+    if (!display || !hist) return;
+
+    if (key === 'C') {
+      currentVal = '0';
+      historyVal = '';
+    } else if (key === '=') {
+      try {
+        historyVal = currentVal + ' =';
+        currentVal = String(eval(currentVal.replace(/×/g, '*').replace(/÷/g, '/')));
+      } catch (e) {
+        currentVal = 'Erreur';
+      }
+    } else if (['+', '-', '×', '÷'].includes(key)) {
+      historyVal = currentVal + ' ' + key;
+      currentVal = '0';
+    } else {
+      if (currentVal === '0' || currentVal === '992' || currentVal === 'Erreur') {
+        currentVal = key;
+      } else {
+        currentVal += key;
+      }
+    }
+    display.textContent = currentVal;
+    hist.textContent = historyVal;
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe pointer-events-none px-margin-mobile mb-space-sm" data-active-classes="bg-primary/15 text-primary shadow-[0_0_12px_rgba(79,219,200,0.3)]"><div class="pointer-events-auto max-w-md mx-auto h-16 rounded-full bg-surface-container-lowest/80 backdrop-blur-2xl px-space-xs flex items-center justify-around shadow-[0_20px_40px_-15px_rgba(0,0,0,0.8),0_0_20px_rgba(79,219,200,0.08)]"><a aria-current="page" class="flex flex-col items-center justify-center w-12 h-12 rounded-full transition-colors active:scale-95 bg-primary/15 text-primary shadow-[0_0_12px_rgba(79,219,200,0.3)]" data-path="hero" href="#"><span class="material-symbols-outlined text-[20px]">home</span><span class="font-label-badge text-[9px] uppercase tracking-tight">Hero</span></a><a class="flex flex-col items-center justify-center w-12 h-12 rounded-full text-on-surface-variant transition-colors active:scale-95" data-path="about" href="#"><span class="material-symbols-outlined text-[20px]">account_circle</span><span class="font-label-badge text-[9px] uppercase tracking-tight">About</span></a><a class="flex flex-col items-center justify-center w-12 h-12 rounded-full text-on-surface-variant transition-colors active:scale-95" data-path="skills" href="#"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-label-badge text-[9px] uppercase tracking-tight">Skills</span></a><a class="flex flex-col items-center justify-center w-12 h-12 rounded-full text-on-surface-variant transition-colors active:scale-95" data-path="projects" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-badge text-[9px] uppercase tracking-tight">Projects</span></a><a class="flex flex-col items-center justify-center w-12 h-12 rounded-full text-on-surface-variant transition-colors active:scale-95" data-path="contact" href="#"><span class="material-symbols-outlined text-[20px]">send</span><span class="font-label-badge text-[9px] uppercase tracking-tight">Contact</span></a></div></nav></body></html>
